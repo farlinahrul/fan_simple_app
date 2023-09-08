@@ -17,6 +17,13 @@ class HomePage extends StatelessWidget {
       body: GetBuilder<HomeController>(
         init: HomeController(),
         builder: (controller) {
+          if (controller.isLoading) {
+            return Center(
+              child: CircularProgressIndicator(
+                color: Resources.color.colorPrimary,
+              ),
+            );
+          }
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24),
             child: Column(
@@ -51,6 +58,20 @@ class HomePage extends StatelessWidget {
                           ? Resources.color.successMain
                           : Resources.color.dangerMain,
                     ),
+                    if (controller.authController.currentUser.value
+                                ?.emailVerified ==
+                            false &&
+                        !controller.isSendingEmail)
+                      GestureDetector(
+                        onTap: () {
+                          controller.sendEmail();
+                        },
+                        child: const TextInter(
+                          text: " (Send Email)",
+                          size: 12,
+                          fontWeight: Weightenum.semibold,
+                        ),
+                      )
                   ],
                 ),
                 const SizedBox(height: 48),

@@ -9,10 +9,11 @@ import '../auth/auth_controller.dart';
 
 class HomeController extends BaseObjectController<model_user.User> {
   final AuthController authController = AuthController.find;
+  bool isSendingEmail = false;
 
   @override
-  void onInit() {
-    getUser();
+  void onInit() async {
+    await getUser();
     super.onInit();
   }
 
@@ -22,7 +23,17 @@ class HomeController extends BaseObjectController<model_user.User> {
     finishLoadData();
   }
 
+  void sendEmail() async {
+    isSendingEmail = true;
+    update();
+    await authController.sendEmailVerification();
+    isSendingEmail = false;
+    update();
+  }
+
   Future<void> getUser() async {
+    loadingState();
+    await Future.delayed(const Duration(seconds: 2));
     await client()
         .then((value) => value
                 .getUser(

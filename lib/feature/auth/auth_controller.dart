@@ -1,7 +1,6 @@
 import 'package:fan_simple_app/data/remote/errorhandler/error_handler.dart';
 import 'package:fan_simple_app/routes/page_names.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -36,7 +35,7 @@ class AuthController extends GetxController {
     } else {
       Get.toNamed(PageName.home);
       if (isNewAccount) {
-        sendEmailVerif();
+        sendEmailVerification();
         isNewAccount = false;
       }
     }
@@ -65,10 +64,9 @@ class AuthController extends GetxController {
       await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email, password: password);
       await client()
-          .then((value) => value
-              .addUser(FirebaseAuth.instance.currentUser?.uid.toString() ?? "",
-                  {'name': name})
-              .then((value) {}))
+          .then((value) => value.addUser(
+              FirebaseAuth.instance.currentUser?.uid.toString() ?? "",
+              {'name': name}).then((value) {}))
           .handleError((onError) {
         debugPrint("On Error $onError");
         setErrorStatus(onError.toString());
@@ -78,7 +76,7 @@ class AuthController extends GetxController {
     }
   }
 
-  Future<void> sendEmailVerif() async {
+  Future<void> sendEmailVerification() async {
     try {
       await FirebaseAuth.instance.currentUser?.sendEmailVerification();
       Get.snackbar("Email Verification sended", "Verify Your Email!");

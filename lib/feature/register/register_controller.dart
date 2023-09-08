@@ -24,7 +24,7 @@ class RegisterController extends BaseObjectController {
 
   Future<void> register() async {
     loadingState();
-    authController.register(emailController.text.trim(),
+    await authController.register(emailController.text.trim(),
         passwordController.text.trim(), nameController.text.trim());
     finishLoadData();
   }
