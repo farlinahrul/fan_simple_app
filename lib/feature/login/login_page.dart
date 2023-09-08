@@ -177,7 +177,7 @@ class LoginPage extends StatelessWidget {
                                     shadowed: false,
                                     onPressed: () async {
                                       if (_formKey.currentState!.validate()) {
-                                        controller.signInWithEmailAndPassword();
+                                        controller.login();
                                       }
                                     }),
                             const SizedBox(height: 12),

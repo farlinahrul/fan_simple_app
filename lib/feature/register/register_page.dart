@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../resources/resources.dart';
+import '../../routes/page_names.dart';
 import '../../utils/helper/constant.dart';
 import '../../utils/helper/validator.dart';
 import '../../utils/widget/form/form_input_field_with_label.dart';
@@ -218,7 +219,7 @@ class RegisterPage extends StatelessWidget {
                               shadowed: false,
                               onPressed: () async {
                                 if (_formKey.currentState!.validate()) {
-                                  Get.back();
+                                  await controller.register();
                                 }
                               }),
                     ],

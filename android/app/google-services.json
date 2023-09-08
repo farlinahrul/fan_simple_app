@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "578846017177",
+    "project_id": "fan-simple-app",
+    "storage_bucket": "fan-simple-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:578846017177:android:8f8d1b08b33191d3c79a08",
+        "android_client_info": {
+          "package_name": "com.example.fan_simple_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "578846017177-fujpb76g3qge3fnief0dq3lemkvdkgpr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfmqczOZH_XTS1_c319gFkaSSP-zJ7QHQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "578846017177-fujpb76g3qge3fnief0dq3lemkvdkgpr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

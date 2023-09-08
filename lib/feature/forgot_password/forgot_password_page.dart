@@ -1,3 +1,4 @@
+import 'package:fan_simple_app/routes/page_names.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -113,7 +114,8 @@ class ForgotPasswordPage extends StatelessWidget {
                                 shadowed: false,
                                 onPressed: () async {
                                   if (_formKey.currentState!.validate()) {
-                                    controller.postForgotPassword();
+                                    await controller.postForgotPassword();
+                                    Get.offNamed(PageName.login);
                                   }
                                 }),
                       ],
