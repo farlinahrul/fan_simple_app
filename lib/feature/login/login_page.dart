@@ -60,12 +60,14 @@ class LoginPage extends StatelessWidget {
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 48.0),
                               child: TextInter(
-                                  size: 14,
-                                  color: Resources.color.paragraphBody,
-                                  fontWeight: Weightenum.regular,
-                                  text:
-                                      "Please enter email and password below to continue",
-                                  align: TextAlign.center),
+                                size: 14,
+                                color: Resources.color.paragraphBody,
+                                fontWeight: Weightenum.regular,
+                                text:
+                                    "Please enter email and password below to continue",
+                                align: TextAlign.center,
+                                maxLines: 3,
+                              ),
                             ),
                             const SizedBox(height: 40.0),
                             AnimatedSwitcher(
@@ -103,7 +105,7 @@ class LoginPage extends StatelessWidget {
                               onTap: () => {},
                               maxLines: 1,
                             ),
-                            const FormVerticalSpace(),
+                            const SizedBox(height: 24),
                             AnimatedSwitcher(
                               duration: const Duration(milliseconds: 250),
                               child: controller.passwordController.text != ""
@@ -157,7 +159,7 @@ class LoginPage extends StatelessWidget {
                               alignment: Alignment.centerRight,
                               child: TextButton(
                                 onPressed: () {
-                                  Get.toNamed(PageName.login);
+                                  Get.toNamed(PageName.forgotPassword);
                                 },
                                 child: TextInter(
                                     size: 14,
@@ -166,12 +168,9 @@ class LoginPage extends StatelessWidget {
                                     text: 'txt_forgot_password'.tr),
                               ),
                             ),
-                            const FormVerticalSpace(height: 48),
+                            const SizedBox(height: 48),
                             controller.isLoading
                                 ? const CircularProgressIndicator()
-                                : Container(),
-                            controller.isLoading
-                                ? Container()
                                 : PrimaryButton(
                                     title: 'txt_button_login'.tr,
                                     borderRadius: 8,
@@ -181,6 +180,29 @@ class LoginPage extends StatelessWidget {
                                         controller.signInWithEmailAndPassword();
                                       }
                                     }),
+                            const SizedBox(height: 12),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                TextInter(
+                                  size: 14,
+                                  color: Resources.color.textSecondary1,
+                                  fontWeight: Weightenum.semibold,
+                                  text: 'Don\'t have any account? ',
+                                ),
+                                TextButton(
+                                  onPressed: () {
+                                    
+                                  },
+                                  child: TextInter(
+                                    size: 14,
+                                    color: Resources.color.subBrand,
+                                    fontWeight: Weightenum.semibold,
+                                    text: 'Sign Up',
+                                  ),
+                                ),
+                              ],
+                            )
                           ],
                         );
                       },
@@ -194,9 +216,4 @@ class LoginPage extends StatelessWidget {
       ),
     );
   }
-}
-
-class FormVerticalSpace extends SizedBox {
-  const FormVerticalSpace({super.key, double height = 24.0})
-      : super(height: height);
 }
