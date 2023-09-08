@@ -28,8 +28,6 @@ class AuthController extends GetxController {
   }
 
   _setInitialScreen(User? user) {
-    debugPrint("TOKEN: ");
-    debugPrint(user?.getIdToken().toString());
     if (user == null) {
       Get.toNamed(PageName.login);
     } else {
@@ -45,6 +43,15 @@ class AuthController extends GetxController {
     try {
       await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password);
+    } catch (firebaseAuthException) {
+      setErrorStatus(firebaseAuthException.toString());
+    }
+  }
+
+  Future<void> reload() async {
+    try {
+      // await FirebaseAuth.instance.currentUser?.reload();
+      currentUser.refresh();
     } catch (firebaseAuthException) {
       setErrorStatus(firebaseAuthException.toString());
     }

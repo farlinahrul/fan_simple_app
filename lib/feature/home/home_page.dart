@@ -4,8 +4,6 @@ import 'package:fan_simple_app/utils/helper/constant.dart';
 import 'package:fan_simple_app/utils/widget/primary_button.dart';
 import 'package:fan_simple_app/utils/widget/text/text_inter.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
 
 class HomePage extends StatelessWidget {
@@ -48,8 +46,8 @@ class HomePage extends StatelessWidget {
                       text: (controller.authController.currentUser.value
                                   ?.emailVerified ??
                               false)
-                          ? "Email verified"
-                          : "Email isn't verified",
+                          ? "Email verified "
+                          : "Email isn't verified ",
                       size: 14,
                       fontWeight: Weightenum.bold,
                       color: (controller.authController.currentUser.value
@@ -67,11 +65,33 @@ class HomePage extends StatelessWidget {
                           controller.sendEmail();
                         },
                         child: const TextInter(
-                          text: " (Send Email)",
+                          text: "(Send Email)",
                           size: 12,
                           fontWeight: Weightenum.semibold,
                         ),
                       )
+                  ],
+                ),
+                const SizedBox(height: 8),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const TextInter(
+                      text: "Already verify your email? ",
+                      size: 14,
+                      fontWeight: Weightenum.bold,
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        controller.authController.reload();
+                      },
+                      child: TextInter(
+                        text: "Click Here",
+                        size: 14,
+                        fontWeight: Weightenum.bold,
+                        color: Resources.color.subBrand,
+                      ),
+                    ),
                   ],
                 ),
                 const SizedBox(height: 48),
