@@ -48,15 +48,6 @@ class AuthController extends GetxController {
     }
   }
 
-  Future<void> reload() async {
-    try {
-      // await FirebaseAuth.instance.currentUser?.reload();
-      currentUser.refresh();
-    } catch (firebaseAuthException) {
-      setErrorStatus(firebaseAuthException.toString());
-    }
-  }
-
   Future<void> logout() async {
     try {
       await FirebaseAuth.instance.signOut();

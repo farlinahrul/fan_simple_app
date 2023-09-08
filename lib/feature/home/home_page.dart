@@ -73,26 +73,11 @@ class HomePage extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 8),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const TextInter(
-                      text: "Already verify your email? ",
-                      size: 14,
-                      fontWeight: Weightenum.bold,
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        controller.authController.reload();
-                      },
-                      child: TextInter(
-                        text: "Click Here",
-                        size: 14,
-                        fontWeight: Weightenum.bold,
-                        color: Resources.color.subBrand,
-                      ),
-                    ),
-                  ],
+                const TextInter(
+                  text:
+                      "After verify by email, You need to log out first to finish your email verification",
+                  size: 14,
+                  fontWeight: Weightenum.bold,
                 ),
                 const SizedBox(height: 48),
                 PrimaryButton(
