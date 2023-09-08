@@ -8,6 +8,7 @@ const Map<String, String> en = {
   'txt_name': 'name',
   'txt_email': 'Email',
   'txt_password': 'Password',
+  'txt_password_confirmation': 'Password Confirmation',
   'txt_menu_home': 'Home', // with argument using %s
   'txt_menu_dialog': 'Dialogs',
   'txt_menu_maps': 'Maps',

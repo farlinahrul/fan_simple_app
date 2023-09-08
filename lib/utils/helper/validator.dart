@@ -25,7 +25,7 @@ class Validator {
   }
 
   String? password(String? value) {
-    String pattern = r'^.{6,}$';
+    String pattern = r'^.{8,}$';
     RegExp regex = RegExp(pattern);
     if (!regex.hasMatch(value!)) {
       return 'txt_valid_password'.tr;
@@ -37,7 +37,7 @@ class Validator {
   String? name(String? value) {
     String pattern = r"^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$";
     RegExp regex = RegExp(pattern);
-    if (!regex.hasMatch(value!)) {
+    if (!(regex.hasMatch(value!) && value.length >= 3 && value.length <= 50)) {
       return 'txt_valid_name'.tr;
     } else {
       return null;

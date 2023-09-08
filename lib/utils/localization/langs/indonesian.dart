@@ -8,6 +8,7 @@ const Map<String, String> id = {
   'txt_name': 'name',
   'txt_email': 'Email',
   'txt_password': 'Password',
+  'txt_password_confirmation': 'Konfirmasi Password',
   'txt_menu_home': 'Beranda',
   'txt_menu_dialog': 'Dialog',
   'txt_menu_maps': 'Peta',

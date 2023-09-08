@@ -188,11 +188,11 @@ class LoginPage extends StatelessWidget {
                                   size: 14,
                                   color: Resources.color.textSecondary1,
                                   fontWeight: Weightenum.semibold,
-                                  text: 'Don\'t have any account? ',
+                                  text: 'Don\'t have any account?',
                                 ),
                                 TextButton(
                                   onPressed: () {
-                                    
+                                    Get.toNamed(PageName.register);
                                   },
                                   child: TextInter(
                                     size: 14,
