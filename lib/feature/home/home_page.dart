@@ -1,4 +1,5 @@
 import 'package:fan_simple_app/feature/home/home_controller.dart';
+import 'package:fan_simple_app/resources/resources.dart';
 import 'package:fan_simple_app/utils/helper/constant.dart';
 import 'package:fan_simple_app/utils/widget/primary_button.dart';
 import 'package:fan_simple_app/utils/widget/text/text_inter.dart';
@@ -16,23 +17,51 @@ class HomePage extends StatelessWidget {
       body: GetBuilder<HomeController>(
         init: HomeController(),
         builder: (controller) {
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              TextInter(
-                text:
-                    "Home ${controller.authController.currentUser.value?.emailVerified} : ${controller.mData?.name}",
-                size: 14,
-                fontWeight: Weightenum.bold,
-              ),
-              PrimaryButton(
-                title: "Logout",
-                onPressed: () {
-                  controller.logout();
-                },
-              )
-            ],
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                TextInter(
+                  text: "Name: ${controller.mData?.name}",
+                  size: 14,
+                  fontWeight: Weightenum.bold,
+                ),
+                const SizedBox(height: 4),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const TextInter(
+                      text: "Status: ",
+                      size: 14,
+                      fontWeight: Weightenum.bold,
+                    ),
+                    TextInter(
+                      text: (controller.authController.currentUser.value
+                                  ?.emailVerified ??
+                              false)
+                          ? "Email verified"
+                          : "Email isn't verified",
+                      size: 14,
+                      fontWeight: Weightenum.bold,
+                      color: (controller.authController.currentUser.value
+                                  ?.emailVerified ??
+                              false)
+                          ? Resources.color.successMain
+                          : Resources.color.dangerMain,
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 48),
+                PrimaryButton(
+                  title: "Logout",
+                  onPressed: () {
+                    controller.logout();
+                  },
+                )
+              ],
+            ),
           );
         },
       ),
