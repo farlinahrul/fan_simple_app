@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../resources/resources.dart';
-import '../../routes/page_names.dart';
 import '../../utils/helper/constant.dart';
 import '../../utils/helper/validator.dart';
 import '../../utils/widget/form/form_input_field_with_label.dart';
@@ -99,7 +98,7 @@ class RegisterPage extends StatelessWidget {
                         onTap: () {},
                         maxLines: 1,
                       ),
-                      SizedBox(height: 24),
+                      const SizedBox(height: 24),
                       AnimatedSwitcher(
                         duration: const Duration(milliseconds: 250),
                         child: controller.emailController.text != ""
@@ -133,7 +132,7 @@ class RegisterPage extends StatelessWidget {
                         onTap: () {},
                         maxLines: 1,
                       ),
-                      SizedBox(height: 24),
+                      const SizedBox(height: 24),
                       AnimatedSwitcher(
                         duration: const Duration(milliseconds: 250),
                         child: controller.passwordController.text != ""
@@ -157,18 +156,30 @@ class RegisterPage extends StatelessWidget {
                       FormInputFieldWithLabel(
                         enabled: !controller.isLoading,
                         controller: controller.passwordController,
-                        iconSuffix: null,
                         labelText: 'txt_password'.tr,
                         errorText: null,
                         validator: Validator().password,
-                        obscureText: false,
                         onChanged: (value) => controller.update(),
                         onSaved: (value) =>
                             controller.passwordController.text = value!,
                         onTap: () {},
                         maxLines: 1,
+                        iconSuffix: SizedBox(
+                          height: 16,
+                          width: 16,
+                          child: IconButton(
+                              color: Resources.color.textHeadLine,
+                              padding: EdgeInsets.zero,
+                              icon: controller.hidePassword
+                                  ? const Icon(Icons.visibility_off)
+                                  : const Icon(Icons.visibility),
+                              onPressed: () => {
+                                    controller.tooglePasswordVisibility(),
+                                  }),
+                        ),
+                        obscureText: controller.hidePassword,
                       ),
-                      SizedBox(height: 24),
+                      const SizedBox(height: 24),
                       AnimatedSwitcher(
                         duration: const Duration(milliseconds: 250),
                         child: controller.passwordConfirmationController.text !=
@@ -194,13 +205,26 @@ class RegisterPage extends StatelessWidget {
                       FormInputFieldWithLabel(
                         enabled: !controller.isLoading,
                         controller: controller.passwordConfirmationController,
-                        iconSuffix: null,
                         labelText: 'txt_password_confirmation'.tr,
                         errorText: null,
                         validator: (val) {
                           return controller.validatePasswordConfirmation();
                         },
-                        obscureText: false,
+                        iconSuffix: SizedBox(
+                          height: 16,
+                          width: 16,
+                          child: IconButton(
+                              color: Resources.color.textHeadLine,
+                              padding: EdgeInsets.zero,
+                              icon: controller.hidePasswordConfirmation
+                                  ? const Icon(Icons.visibility_off)
+                                  : const Icon(Icons.visibility),
+                              onPressed: () => {
+                                    controller
+                                        .tooglePasswordConfirmationVisibility(),
+                                  }),
+                        ),
+                        obscureText: controller.hidePasswordConfirmation,
                         onChanged: (value) => controller.update(),
                         onSaved: (value) => controller
                             .passwordConfirmationController.text = value!,

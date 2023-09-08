@@ -12,6 +12,19 @@ class RegisterController extends BaseObjectController {
   TextEditingController passwordConfirmationController =
       TextEditingController();
 
+  bool hidePassword = true;
+  bool hidePasswordConfirmation = true;
+
+  void tooglePasswordVisibility() {
+    hidePassword = !hidePassword;
+    update();
+  }
+
+  void tooglePasswordConfirmationVisibility() {
+    hidePassword = !hidePassword;
+    update();
+  }
+
   String? validatePasswordConfirmation() {
     if (passwordController.text.isEmpty) {
       return "Password field empty";
