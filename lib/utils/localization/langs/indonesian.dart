@@ -380,6 +380,7 @@ const Map<String, String> id = {
   'txt_button_retry': 'Coba Lagi',
   'txt_button_change_locale': 'Ganti Bahasa',
   'txt_button_login': 'Masuk',
+  'txt_button_register': 'Daftar',
   'txt_button_logout': 'Keluar',
   'txt_button_camera': 'Kamera',
   'txt_button_gallery': 'Album',

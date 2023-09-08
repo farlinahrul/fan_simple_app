@@ -391,6 +391,7 @@ const Map<String, String> en = {
   'txt_button_retry': 'Retry',
   'txt_button_change_locale': 'Change Language',
   'txt_button_login': 'Login',
+  'txt_button_register': 'Register',
   'txt_button_logout': 'Log out',
   'txt_button_camera': 'Camera',
   'txt_button_gallery': 'Gallery',
